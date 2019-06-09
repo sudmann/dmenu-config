@@ -22,12 +22,13 @@ md5sums=('57b5c28f7e3de908f5e5c2a65cd72e16'
          'b7edb3ef4143f4caafb632897452222e'
          '0e4017e122a52a4ccbea5db54ab0da6a'
          '274972c3f6de489dd00543a6d653b960'
-         '3adbb14eca6bcf7102e1eba712028e1f')
+         '2c3ce170ede8322a2004fe3f3ed1e053')
 
 prepare() {
 	# use custom config if exists
+	cd $srcdir
 	if [[ -f config.h ]]; then
-		cp "config.h" "$srcdir/$pkgname-$pkgver/config.h"
+		cp "config.h" "$pkgname-$pkgver/config.def.h"
 	fi
 
 	# apply patches
@@ -36,6 +37,9 @@ prepare() {
 	patch -p1 --forward --input="${srcdir}/dmenu-xyw-$pkgver.diff"
 	patch -p1 --input="${srcdir}/dmenu-mousesupport-$pkgver.diff"
 	patch -p1 -F 5 --input="${srcdir}/dmenu-password-$pkgver.diff"
+
+	# rename config.def.h to config.h
+	mv config.def.h config.h
 }
 
 build() {
