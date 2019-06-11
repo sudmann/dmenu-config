@@ -9,6 +9,7 @@ depends=('sh' 'libxinerama' 'libxft')
 makedepends=('git')
 provides=($pkgname)
 conflicts=($pkgname)
+groups=('modified')
 
 source=(https://dl.suckless.org/tools/dmenu-$pkgver.tar.gz
 		https://tools.suckless.org/dmenu/patches/xyw/dmenu-xyw-$pkgver.diff
